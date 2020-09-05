@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the weather like?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    <style type="text/css">
+        h1 {text-align: center;}
+        body{
+                background-image:url('https://i.pinimg.com/originals/21/5f/25/215f250a20337bc2d808394e808adacf.gif');
+                background-size: cover;
+                background-attachment: fixed;
+        }
+        .content{
+            background: Grey;
+            width:50;
+            padding: 5px;
+            margin: 100px auto;
+            font-family: calibri
+        }
+        p{
+            font-size: 90px'
+            color: white;
+        }
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+        <div class="content">
+            <h1 style="color:white;font-size: 50px">Welcome!!!Check Weather</h1>
+        </div>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <input class="input" name="city" type="text" placeholder="City Name">
+                            </div>
+                            <div class="control">
+                                <button class="button is-info">
+                                    Add City
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    {% for weather in weather_data %}
+                    <div class="box">
+                        <article class="media">
+                            <div class="media-left">
+                                <figure class="image is-80x80">
+                                    <img src="http://openweathermap.org/img/w/{{ weather.icon }}.png" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <div class="content">
+                                    <p>
+                                        <span class="title">{{ weather.city }}</span>
+                                        <br><b><h6 style="font-size: 18px">Temp: {{ weather.temp }}° C</h6></b>
+                                        <b><h6 style="font-size: 18px">{{ weather.description }}</h6></b>
+                                        <b><h6 style="font-size: 18px>Humidity: {{ weather.humidity }}</h6></b>
+                                        <b><h6 style="font-size: 18px>Speed: {{ weather.speed }}m/s</h6></b>
+                                    </p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    </footer>
+</body>
+
+</html>
